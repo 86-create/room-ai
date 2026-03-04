@@ -39,9 +39,9 @@ export default function Home() {
           </h2>
 
           <select
-            className="text-black p-2 rounded mb-6"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
+  className="bg-white text-black p-2 rounded mb-6"
+  value={age}
+  onChange={(e) => setAge(e.target.value)}
           >
             <option value="">選択してください</option>
             <option value="20s">20代</option>
