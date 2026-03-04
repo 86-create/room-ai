@@ -106,17 +106,51 @@ export default function Home() {
       )}
 
       {step === questions.length && (
-        <>
-          <h2 className="text-2xl font-bold mb-6">診断結果 🎉</h2>
-          <div className="text-left bg-white text-black p-6 rounded w-full max-w-md">
-            {Object.entries(answers).map(([key, value]) => (
-              <p key={key} className="mb-2">
-                {key}：{value}
-              </p>
-            ))}
-          </div>
-        </>
-      )}
+  <>
+    <h2 className="text-2xl font-bold mb-6">診断結果 🎉</h2>
+
+    {(() => {
+      let type = "";
+      let description = "";
+
+      if (
+        answers.style === "北欧" &&
+        answers.color === "白系" &&
+        answers.priority === "デザイン"
+      ) {
+        type = "🧊 北欧ミニマリスト";
+        description =
+          "シンプルで洗練された空間を好むタイプ。無駄を省き、機能美を大切にします。";
+      } else if (
+        answers.style === "モダン" &&
+        answers.color === "黒系" &&
+        answers.income === "800万以上"
+      ) {
+        type = "🏨 ラグジュアリーホテル系";
+        description =
+          "高級感と統一感を重視。ホテルのような非日常空間を目指すタイプ。";
+      } else if (
+        answers.style === "和風" &&
+        answers.color === "木目"
+      ) {
+        type = "🌿 ナチュラル和モダン";
+        description =
+          "自然素材と落ち着きを好むタイプ。心が安らぐ空間作りが得意。";
+      } else {
+        type = "🎨 クリエイティブ個性派";
+        description =
+          "自分らしさを大切にする自由な発想タイプ。色やデザインで遊び心を表現します。";
+      }
+
+      return (
+        <div className="bg-white text-black p-6 rounded w-full max-w-md text-left">
+          <h3 className="text-xl font-bold mb-4">{type}</h3>
+          <p>{description}</p>
+        </div>
+      );
+    })()}
+  </>
+)}
     </main>
   );
 }
