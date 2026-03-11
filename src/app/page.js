@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const [screen, setScreen] = useState("intro");
+  const [search, setSearch] = useState("");
 
   const furniture = [
     { name: "ソファ", img: "/sofa.jpg" },
@@ -13,6 +14,15 @@ export default function Home() {
     { name: "照明", img: "/light.jpg" },
     { name: "収納", img: "/syuunou.jpg" }
   ];
+
+  const searchAmazon = () => {
+  if (!search) return;
+
+  const keyword = encodeURIComponent(search + " 家具");
+  const url = `https://www.amazon.co.jp/s?k=${keyword}`;
+
+  window.open(url, "_blank");
+};
 
   useEffect(() => {
     if (screen === "intro") {
@@ -72,13 +82,27 @@ export default function Home() {
             </h1>
 
             {/* 検索バー */}
-            <div className="mb-8">
-              <input
-                type="text"
-                placeholder="家具を検索..."
-                className="w-full p-3 rounded bg-white text-black"
-              />
-            </div>
+            <div className="flex gap-2 mb-8">
+
+  <input
+    type="text"
+    placeholder="家具を検索..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="flex-1 p-3 rounded bg-white text-black"
+  />
+
+  <button
+    onClick={searchAmazon}
+    className="bg-white text-black px-4 rounded font-semibold hover:bg-gray-300"
+  >
+    検索
+  </button>
+  onKeyDown={(e) => {
+  if (e.key === "Enter") searchAmazon();
+}}
+
+</div>
 
             {/* 家具一覧 */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
