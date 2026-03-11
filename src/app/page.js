@@ -89,23 +89,20 @@ export default function Home() {
     placeholder="家具を検索..."
     value={search}
     onChange={(e) => setSearch(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        searchAmazon();
+      }
+    }}
     className="flex-1 p-3 rounded bg-white text-black"
   />
 
   <button
     onClick={searchAmazon}
     className="bg-white text-black px-4 rounded font-semibold hover:bg-gray-300"
-    onKeyDown={(e) => {
-  if (e.key === "Enter") searchAmazon();
-}}
   >
     検索
   </button>
-
-
-    onKeyDown={(e) => {
-  if (e.key === "Enter") searchAmazon();
-}}
 
 </div>
 
