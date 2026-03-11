@@ -82,29 +82,30 @@ export default function Home() {
             </h1>
 
             {/* 検索バー */}
-            <div className="flex gap-2 mb-8">
+            <form
+  onSubmit={(e) => {
+    e.preventDefault();
+    searchAmazon();
+  }}
+  className="flex-1 p-4 rounded-lg bg-white text-black text-lg"
+>
 
   <input
     type="text"
     placeholder="家具を検索..."
     value={search}
     onChange={(e) => setSearch(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        searchAmazon();
-      }
-    }}
     className="flex-1 p-3 rounded bg-white text-black"
   />
 
   <button
-    onClick={searchAmazon}
+    type="submit"
     className="bg-white text-black px-4 rounded font-semibold hover:bg-gray-300"
   >
     検索
   </button>
 
-</div>
+</form>
 
             {/* 家具一覧 */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
