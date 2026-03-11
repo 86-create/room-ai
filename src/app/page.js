@@ -87,7 +87,7 @@ export default function Home() {
     e.preventDefault();
     searchAmazon();
   }}
-  className="flex-1 p-4 rounded-lg bg-white text-black text-lg"
+  className="flex gap-2 mb-8"
 >
 
   <input
@@ -95,18 +95,17 @@ export default function Home() {
     placeholder="家具を検索..."
     value={search}
     onChange={(e) => setSearch(e.target.value)}
-    className="flex-1 p-3 rounded bg-white text-black"
+    className="flex-1 p-4 rounded-lg bg-white text-black text-lg"
   />
 
   <button
     type="submit"
-    className="bg-white text-black px-4 rounded font-semibold hover:bg-gray-300"
+    className="bg-white text-black px-6 rounded-lg font-semibold hover:bg-gray-300"
   >
     検索
   </button>
 
 </form>
-
             {/* 家具一覧 */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
 
