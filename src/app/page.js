@@ -102,6 +102,11 @@ export default function Home() {
     検索
   </button>
 
+
+    onKeyDown={(e) => {
+  if (e.key === "Enter") searchAmazon();
+}}
+
 </div>
 
             {/* 家具一覧 */}
