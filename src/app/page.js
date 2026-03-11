@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [screen, setScreen] = useState("intro"); 
@@ -19,9 +20,14 @@ export default function Home() {
 
       {/* ================= INTRO ================= */}
       {screen === "intro" && (
-        <div className="text-5xl font-bold animate-fadeOut">
-          Room AI
-        </div>
+        <motion.div
+  initial={{ opacity: 1, scale: 1 }}
+  animate={{ opacity: 0, scale: 1.3, filter: "blur(20px)" }}
+  transition={{ duration: 2 }}
+  className="text-6xl font-bold"
+>
+  Room AI
+</motion.div>
       )}
 
       {/* ================= HOME ================= */}
