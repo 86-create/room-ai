@@ -11,7 +11,7 @@ export default function Home() {
     if (screen === "intro") {
       setTimeout(() => {
         setScreen("home");
-      }, 3000);
+      }, 4000);
     }
   }, [screen]);
 
@@ -23,7 +23,7 @@ export default function Home() {
         <motion.div
   initial={{ opacity: 1, scale: 1 }}
   animate={{ opacity: 0, scale: 1.3, filter: "blur(20px)" }}
-  transition={{ duration: 2 }}
+  transition={{ delay: 1, duration: 2 }}
   className="text-6xl font-bold"
 >
   Room AI
