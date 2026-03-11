@@ -5,6 +5,15 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [screen, setScreen] = useState("intro");
 
+  const furniture = [
+    { name: "ソファ", img: "/sofa.jpg" },
+    { name: "テーブル", img: "/table.jpg" },
+    { name: "ベッド", img: "/bed.jpg" },
+    { name: "チェア", img: "/chair.jpg" },
+    { name: "照明", img: "/light.jpg" },
+    { name: "収納", img: "/syuunou.jpg" }
+  ];
+
   useEffect(() => {
     if (screen === "intro") {
       setTimeout(() => {
@@ -16,30 +25,30 @@ export default function Home() {
   return (
     <main className="relative min-h-screen text-white flex items-center justify-center p-6">
 
-      {/* ===== 背景3分割 ===== */}
+      {/* 背景3分割 */}
       <div className="absolute inset-0 grid grid-cols-3">
 
         <div
           className="bg-cover bg-center"
           style={{ backgroundImage: "url('/livi_1.jpg')" }}
-        ></div>
+        />
 
         <div
           className="bg-cover bg-center"
           style={{ backgroundImage: "url('/livi_2.jpg')" }}
-        ></div>
+        />
 
         <div
           className="bg-cover bg-center"
           style={{ backgroundImage: "url('/livi_3.jpg')" }}
-        ></div>
+        />
 
       </div>
 
-      {/* ===== 暗いレイヤー ===== */}
-      <div className="absolute inset-0 bg-black opacity-60"></div>
+      {/* 暗いレイヤー */}
+      <div className="absolute inset-0 bg-black opacity-60" />
 
-      {/* ===== コンテンツ ===== */}
+      {/* コンテンツ */}
       <div className="relative z-10 w-full flex items-center justify-center">
 
         {/* ================= INTRO ================= */}
@@ -73,15 +82,26 @@ export default function Home() {
 
             {/* 家具一覧 */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
-              {["ソファ", "テーブル", "ベッド", "チェア", "照明", "収納"].map((item) => (
+
+              {furniture.map((item) => (
                 <div
-                  key={item}
-                  className="bg-white text-black p-6 rounded shadow"
+                  key={item.name}
+                  className="bg-white text-black rounded shadow overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 cursor-pointer"
                 >
-                  <div className="h-24 bg-gray-200 mb-4 rounded"></div>
-                  <p className="font-semibold">{item}</p>
+
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-32 object-cover"
+                  />
+
+                  <div className="p-4 text-center">
+                    <p className="font-semibold">{item.name}</p>
+                  </div>
+
                 </div>
               ))}
+
             </div>
 
             {/* 診断ボタン */}
@@ -114,31 +134,6 @@ export default function Home() {
         )}
 
       </div>
-
-      {/* ===== アニメーションCSS ===== */}
-      <style jsx>{`
-        .animate-fadeOut {
-          animation: fadeOut 3s ease forwards;
-        }
-
-        @keyframes fadeOut {
-          0% {
-            opacity: 1;
-            filter: blur(0px);
-            transform: scale(1);
-          }
-          70% {
-            opacity: 1;
-            filter: blur(4px);
-            transform: scale(1.05);
-          }
-          100% {
-            opacity: 0;
-            filter: blur(20px);
-            transform: scale(1.2);
-          }
-        }
-      `}</style>
 
     </main>
   );
