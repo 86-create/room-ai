@@ -95,12 +95,12 @@ export default function Home() {
   <button
     onClick={searchAmazon}
     className="bg-white text-black px-4 rounded font-semibold hover:bg-gray-300"
+    onKeyDown={(e) => {
+  if (e.key === "Enter") searchAmazon();
+}}
   >
     検索
   </button>
-  onKeyDown={(e) => {
-  if (e.key === "Enter") searchAmazon();
-}}
 
 </div>
 
